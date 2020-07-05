@@ -1,0 +1,22 @@
+﻿@using JobLibrary.Models;
+@model  LotteryData
+@{
+    <div id="FirstData">
+        @if (Model != null)
+        {
+
+            <div class="btn-group" role="group" aria-label="First group">
+                <button type="button" class="btn btn-default">@Model.Champion</button>
+                <button type="button" class="btn btn-default">@Model.RunnerUp</button>
+                <button type="button" class="btn btn-default">@Model.Third</button>
+                <button type="button" class="btn btn-default">@Model.Fourth</button>
+                <button type="button" class="btn btn-default">@Model.Fifth</button>
+                <button type="button" class="btn btn-default">@Model.Sixth</button>
+                <button type="button" class="btn btn-default">@Model.Seventh</button>
+                <button type="button" class="btn btn-default">@Model.Eighth</button>
+                <button type="button" class="btn btn-default">@Model.Ninth</button>
+                <button type="button" class="btn btn-default">@Model.Tenth</button>
+            </div>
+        }
+    </div>
+}

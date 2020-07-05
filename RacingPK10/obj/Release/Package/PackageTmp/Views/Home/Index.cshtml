@@ -1,0 +1,65 @@
+﻿@using JobLibrary.Models;
+@model List<LotteryData>
+<table class="table table-striped" id="data">
+    <thead>
+        <tr>
+            <th>期号</th>
+            <th>冠军</th>
+            <th>亚军</th>
+            <th>第三</th>
+            <th>第四</th>
+            <th>第五</th>
+            <th>第六</th>
+            <th>第七</th>
+            <th>第八</th>
+            <th>第九</th>
+            <th>第十</th>
+            <th>日期</th>
+            <th>时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IssueId</td>
+                <td>@item.Champion</td>
+                <td>@item.RunnerUp</td>
+                <td>@item.Third</td>
+                <td>@item.Fourth</td>
+                <td>@item.Fifth</td>
+                <td>@item.Sixth</td>
+                <td>@item.Seventh</td>
+                <td>@item.Eighth</td>
+                <td>@item.Ninth</td>
+                <td>@item.Tenth</td>
+                <td>@item.Date.ToString("d")</td>
+                <td>@item.Time</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Scripts.Render("~/bundles/jquery")
+<script>
+    jQuery(function () {
+        function DisplayCreat() {
+            $.ajax({
+                url: '/Home/Index',//控制器活动,返回一个分部视图,并且给分部视图传递数据.
+                type: 'GET',
+                contentType: 'application/json;charset=utf-8',//数据类型必须有
+                async: true,//异步
+                success: function (data) //成功后的回调方法
+                {
+                    $("#data").html(data);//data--就是对应的分部视图页面内容.
+                    //alert(data)//弹出框
+                },
+                error: function (data) {
+                    alert("失败!")//弹出框
+                }
+            });
+        }
+        setInterval(function () {
+            DisplayCreat();
+        }, 60000);
+    })
+</script>

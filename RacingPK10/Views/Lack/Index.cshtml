@@ -1,0 +1,67 @@
+﻿<div class="btn-group" ng-app="myApp" ng-controller="myCtrl">
+    @if (Model != null && Model.Count > 0)
+    {
+        <div class="select">
+            <button type="button" class="btn btn-info">{{issueId}}</button>
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                @foreach (var item in Model)
+                {
+                    <li><a ng-click="switch(@item)">@item</a></li>
+                }
+            </ul>
+        </div>
+    }
+    <div class="lack-input">
+        <input type="number" ng-model="one" min="1" max="10" class="form-control btn-width" placeholder="冠军" aria-describedby="basic-addon3">
+        <input type="number" ng-model="two" min="1" max="10" class="form-control btn-width" placeholder="亚军" aria-describedby="basic-addon3">
+        <input type="number" ng-model="three" min="1" max="10" class="form-control btn-width" placeholder="第三名" aria-describedby="basic-addon3">
+        <input type="number" ng-model="four" min="1" max="10" class="form-control btn-width" placeholder="第四名" aria-describedby="basic-addon3">
+        <input type="number" ng-model="five" min="1" max="10" class="form-control btn-width" placeholder="第五名" aria-describedby="basic-addon3">
+        <input type="number" ng-model="six" min="1" max="10" class="form-control btn-width" placeholder="第六名" aria-describedby="basic-addon3">
+        <input type="number" ng-model="seven" min="1" max="10" class="form-control btn-width" placeholder="第七名" aria-describedby="basic-addon3">
+        <input type="number" ng-model="eight" min="1" max="10" class="form-control btn-width" placeholder="第八名" aria-describedby="basic-addon3">
+        <input type="number" ng-model="nine" min="1" max="10" class="form-control btn-width" placeholder="第九名" aria-describedby="basic-addon3">
+        <input type="number" ng-model="ten" min="1" max="10" class="form-control btn-width" placeholder="第十名" aria-describedby="basic-addon3">
+        <input type="text" ng-model="data" class="form-control btn-date" placeholder="日期">
+        <input type="text" ng-model="time" class="form-control btn-time" placeholder="时间">
+    </div>
+    <div class="lack-input"><button type="button" class="btn btn-info" ng-click="addLottery()">添加</button></div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/angular")
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $http, $filter,$window) {
+        $scope.issueId = @Model[0];
+        $scope.switch = function (int) {
+            $scope.issueId = int;
+        }
+        $scope.addLottery = function () {
+            var json = { IssueId: $scope.issueId, Champion: $scope.one, RunnerUp: $scope.two, Third: $scope.three, Fourth: $scope.four, Fifth: $scope.five, Sixth: $scope.six, Seventh: $scope.seven, Eighth: $scope.eight, Ninth: $scope.nine, Tenth: $scope.ten, Date: $filter('date')($scope.data,"yyyy/MM/dd"), Time: $scope.time };
+            if (json.Champion != null && json.RunnerUp != null && json.Third != null && json.Fourth != null && json.Fifth != null && json.Sixth != null & json.Eighth != null && json.Ninth != null && json.Tenth != null, json.Date != null, json.Time != null) {
+                $http({
+                    method: 'post',
+                    url: '/Lack/AddLottery',
+                    data: json
+                }).then(function successCallback(response) {
+                    if (response) {
+                        alert("添加成功！");
+                        $window.location.reload();
+                    }
+                    else {
+                        alert("添加失败！");
+                    }
+                }, function errorCallback(response) {
+                    // 请求失败执行代码
+                    alert("添加失败！");
+                });
+            } else {
+                alert("数据为空,请重新填写！")
+            }
+        }
+    });
+</script>

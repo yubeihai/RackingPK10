@@ -1,0 +1,24 @@
+﻿@using JobLibrary.Models;
+@model List<NumeralGroup>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>数字组</th>
+            <th>名次</th>
+            <th>添加或修改时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Group</td>
+                <td>@item.Ranking</td>
+                <td>@item.PublishTime</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

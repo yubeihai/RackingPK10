@@ -1,0 +1,125 @@
+﻿<div ng-app="myApp" ng-controller="seeDisc">
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th width="40">名次</th>
+                <th width="180">热度&遗漏</th>
+                <th>数据</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in data">
+                <td>{{x.ranking}}</td>
+                <td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#########</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>6</th>
+                                <th>7</th>
+                                <th>8</th>
+                                <th>9</th>
+                                <th>10</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="heat">
+                                <td class="text">热度(50)</td>
+                                <td ng-class="{'blue': x.fiftyheat.one<=4,'pink':4<x.fiftyheat.one&&x.fiftyheat.one<=6,'red':6<x.fiftyheat.one}">{{x.fiftyheat.one}}</td>
+                                <td ng-class="{'blue': x.fiftyheat.two<=4,'pink':4<x.fiftyheat.two&&x.fiftyheat.two<=6,'red':6<x.fiftyheat.two}">{{x.fiftyheat.two}}</td>
+                                <td ng-class="{'blue': x.fiftyheat.three<=4,'pink':4<x.fiftyheat.three&&x.fiftyheat.three<=6,'red':6<x.fiftyheat.three}">{{x.fiftyheat.three}}</td>
+                                <td ng-class="{'blue': x.fiftyheat.four<=4,'pink':4<x.fiftyheat.four&&x.fiftyheat.four<=6,'red':6<x.fiftyheat.four}">{{x.fiftyheat.four}}</td>
+                                <td ng-class="{'blue': x.fiftyheat.five<=4,'pink':4<x.fiftyheat.five&&x.fiftyheat.five<=6,'red':6<x.fiftyheat.five}">{{x.fiftyheat.five}}</td>
+                                <td ng-class="{'blue': x.fiftyheat.six<=4,'pink':4<x.fiftyheat.six&&x.fiftyheat.six<=6,'red':6<x.fiftyheat.six}">{{x.fiftyheat.six}}</td>
+                                <td ng-class="{'blue': x.fiftyheat.seven<=4,'pink':4<x.fiftyheat.seven&&x.fiftyheat.seven<=6,'red':6<x.fiftyheat.seven}">{{x.fiftyheat.seven}}</td>
+                                <td ng-class="{'blue': x.fiftyheat.eight<=4,'pink':4<x.fiftyheat.eight&&x.fiftyheat.eight<=6,'red':6<x.fiftyheat.eight}">{{x.fiftyheat.eight}}</td>
+                                <td ng-class="{'blue': x.fiftyheat.nine<=4,'pink':4<x.fiftyheat.nine&&x.fiftyheat.nine<=6,'red':6<x.fiftyheat.nine}">{{x.fiftyheat.nine}}</td>
+                                <td ng-class="{'blue': x.fiftyheat.ten<=4,'pink':4<x.fiftyheat.ten&&x.fiftyheat.ten<=6,'red':6<x.fiftyheat.ten}">{{x.fiftyheat.ten}}</td>
+                            </tr>
+                            <tr class="heat">
+                                <td class="text">热度(100)</td>
+                                <td ng-class="{'blue': x.hundredheat.one<=8,'pink':8<x.hundredheat.one&&x.hundredheat.one<=12,'red':12<x.hundredheat.one}">{{x.hundredheat.one}}</td>
+                                <td ng-class="{'blue': x.hundredheat.two<=8,'pink':8<x.hundredheat.two&&x.hundredheat.two<=12,'red':12<x.hundredheat.two}">{{x.hundredheat.two}}</td>
+                                <td ng-class="{'blue': x.hundredheat.three<=8,'pink':8<x.hundredheat.three&&x.hundredheat.three<=12,'red':12<x.hundredheat.three}">{{x.hundredheat.three}}</td>
+                                <td ng-class="{'blue': x.hundredheat.four<=8,'pink':8<x.hundredheat.four&&x.hundredheat.four<=12,'red':12<x.hundredheat.four}">{{x.hundredheat.four}}</td>
+                                <td ng-class="{'blue': x.hundredheat.five<=8,'pink':8<x.hundredheat.five&&x.hundredheat.five<=12,'red':12<x.hundredheat.five}">{{x.hundredheat.five}}</td>
+                                <td ng-class="{'blue': x.hundredheat.six<=8,'pink':8<x.hundredheat.six&&x.hundredheat.six<=12,'red':12<x.hundredheat.six}">{{x.hundredheat.six}}</td>
+                                <td ng-class="{'blue': x.hundredheat.seven<=8,'pink':8<x.hundredheat.seven&&x.hundredheat.seven<=12,'red':12<x.hundredheat.seven}">{{x.hundredheat.seven}}</td>
+                                <td ng-class="{'blue': x.hundredheat.eight<=8,'pink':8<x.hundredheat.eight&&x.hundredheat.eight<=12,'red':12<x.hundredheat.eight}">{{x.hundredheat.eight}}</td>
+                                <td ng-class="{'blue': x.hundredheat.nine<=8,'pink':8<x.hundredheat.nine&&x.hundredheat.nine<=12,'red':12<x.hundredheat.nine}">{{x.hundredheat.nine}}</td>
+                                <td ng-class="{'blue': x.hundredheat.ten<=8,'pink':8<x.hundredheat.ten&&x.hundredheat.ten<=12,'red':12<x.hundredheat.ten}">{{x.hundredheat.ten}}</td>
+                            </tr>
+                            <tr>
+                                <td>遗漏</td>
+                                <td>{{x.omission.One}}</td>
+                                <td>{{x.omission.Two}}</td>
+                                <td>{{x.omission.Three}}</td>
+                                <td>{{x.omission.Four}}</td>
+                                <td>{{x.omission.Five}}</td>
+                                <td>{{x.omission.Six}}</td>
+                                <td>{{x.omission.Seven}}</td>
+                                <td>{{x.omission.Eight}}</td>
+                                <td>{{x.omission.Nine}}</td>
+                                <td>{{x.omission.Ten}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>数字组</th>
+                                <th>枪数</th>
+                                <th>数据</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="y in x.groupDatas">
+                                <td>{{y.group}}</td>
+                                <td>{{y.gunNumber}}</td>
+                                <td>十天:{{y.calculation.tenDay}};一月:{{y.calculation.oneMonth}};三月:{{y.calculation.threeMonth}};半年:{{y.calculation.halfYear}};一年:{{y.calculation.oneYear}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/angular")
+<script type="text/javascript">
+    var myApp = angular.module('myApp', []);
+    myApp.controller('seeDisc', function ($scope, $interval, $http) {
+        $http({
+            method: 'GET',
+            url: 'Statistic/SeeDisc'
+        }).then(function successCallback(response) {
+            $scope.data = response.data;
+        }, function errorCallback(response) {
+            // 请求失败执行代码
+            alert("请求失败！");
+        });
+        var timeout_upd = $interval(function () {
+            $http({
+                method: 'GET',
+                url: 'Statistic/SeeDisc'
+            }).then(function successCallback(response) {
+                $scope.data = response.data;
+            }, function errorCallback(response) {
+                // 请求失败执行代码
+                alert("请求失败！");
+            });
+        }, 60000);
+        $scope.$on('$destroy', function () {
+            $interval.cancel(timeout_upd);
+        })
+    });
+
+</script>

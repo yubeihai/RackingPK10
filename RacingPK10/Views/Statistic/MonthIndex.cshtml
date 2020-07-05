@@ -1,0 +1,56 @@
+﻿@using JobLibrary.Models;
+@model List<StatisticsMonth>
+@{
+    int i = 1;
+}
+<table id="MonthData" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>名次</th>
+            <th>连续次数</th>
+            <th>连续出现次数</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.RankingId</td>
+                    <td>@item.Frequency</td>
+                    <td>@item.Number</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    jQuery(function () {
+        function MonthData() {
+            $.ajax({
+                url: 'MonthIndex',//控制器活动,返回一个分部视图,并且给分部视图传递数据.
+                type: 'GET',
+                contentType: 'application/json;charset=utf-8',//数据类型必须有
+                async: true,//异步
+                success: function (data) //成功后的回调方法
+                {
+                    $("#firstdata").html(data);//data--就是对应的分部视图页面内容.
+                    //alert(data)//弹出框
+                },
+                error: function (data) {
+                    alert("失败!")//弹出框
+                }
+            });
+        }
+        setInterval(function () {
+            MonthData();
+        }, 60000);
+    })
+
+</script>
+

@@ -1,0 +1,138 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.heat {
+    color: #fff;
+}
+
+.text {
+    color: #000;
+}
+
+.blue {
+    background: #0223ff;
+}
+
+.pink {
+    background: #e500ff;
+}
+
+.red {
+    background: #ff0000;
+}
+
+.btn-width {
+    width: 178px !important;
+}
+
+.bets .input-group {
+    float: left;
+}
+
+    .bets .input-group .ng-scope .btn {
+        float: left;
+    }
+
+    .bets .input-group .ng-scope .btn-width {
+        float: left;
+    }
+
+    .bets .input-group .btn {
+        color: #fff;
+    }
+
+.one {
+    background: #ded604;
+}
+
+.two {
+    background: #2c68ef;
+}
+
+.three {
+    background: #313131;
+}
+
+.four {
+    background: #ff7e28;
+}
+
+.five {
+    background: #23e5ea;
+}
+
+.six {
+    background: #3020f4;
+}
+
+.seven {
+    background: #dcdcdc;
+}
+
+.eight {
+    background: #ff0000;
+}
+
+.nine {
+    background: #530909;
+}
+
+.ten {
+    background: #3baf1a;
+}
+
+.bets-but {
+    margin-top: 24px;
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+
+.btn-group {
+    top: 10px;
+}
+
+.select {
+    position: relative;
+}
+
+.lack-input .btn-width {
+    float: left;
+    margin-left: 4px;
+    width: 86px !important;
+}
+
+.lack-input {
+    float: left;
+    width: 100%;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.btn-date, .btn-time {
+    float: left;
+    width: 108px;
+    margin-left: 4px;
+}

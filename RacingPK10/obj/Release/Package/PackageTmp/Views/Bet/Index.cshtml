@@ -1,0 +1,75 @@
+﻿<div class="bets" ng-app="bets" ng-controller="betsStart">
+    <div ng-repeat="x in records" class="left">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">{{x.Racing}}</span>
+            <div ng-repeat="y in intRacing">
+                <button type="button" class="btn btn-default one" ng-class="y.Class">{{y.Racing}}</button>
+                <span ng-show="false" class="number">{{x.Number+$index}}</span>
+                <input type="number" value="maney" min="1" max="999999" ng-model="maney" class="form-control btn-width" placeholder="下注金额" aria-describedby="basic-addon3">
+                <span class="maney" ng-show="false">{{maney}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="bets-but">
+        <button type="button" class="btn btn-primary btn-lg" ng-class="disabled" ng-click="StartBets()">点击下注</button>
+    </div>
+
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/angular")
+<script type="text/javascript">
+    var bets = angular.module('bets', []);
+    bets.controller('betsStart', function ($scope, $http) {
+        $scope.records = [{ "Racing": "冠军", "Number": 22 }, { "Racing": "亚军", "Number": 38 }, { "Racing": "第三名", "Number": 54 }, { "Racing": "第四名", "Number": 70 }, { "Racing": "第五名", "Number": 86 }, { "Racing": "第六名", "Number": 102 }, { "Racing": "第七名", "Number": 116 }, { "Racing": "第八名", "Number": 130 }, { "Racing": "第九名", "Number": 144 }, { "Racing": "第十名", "Number": 158 }];
+        $scope.intRacing = [{ "Racing": 1, "Class": "one" }, { "Racing": 2, "Class": "two" }, { "Racing": 3, "Class": "three" }, { "Racing": 4, "Class": "four" }, { "Racing": 5, "Class": "five" }, { "Racing": 6, "Class": "six" }, { "Racing": 7, "Class": "seven" }, { "Racing": 8, "Class": "eight" }, { "Racing": 9, "Class": "nine" }, { "Racing": 10, "Class": "ten" }]
+        $scope.StartBets = function () {
+            $scope.disabled = "disabled";
+            var r = [];
+            $(".maney").each(function () {
+                if ($(this).text() != "") {
+                    var number = $(this).siblings(".number").text();
+                    var intracing = $(this).siblings(".btn-default").text();
+                    var racing = $(this).parent().parent().children("#basic-addon1").text();
+                    var maney = parseInt($(this).text());
+                    r.push([number, racing, intracing, 9.9, maney ]);
+                }
+            });
+            if (r == null || r.length <= 0) {
+                alert("注单失败，注单为空！");
+                $scope.disabled = "";
+                return
+            }
+            var url = "Infos/InsertOrder?v=" + Math.random();
+            p = function () {
+                for (var i, t = "", n = 1; n <= 32; n++) i = Math.floor(Math.random() * 16).toString(16), t += i, (n == 8 || n == 12 || n == 16 || n == 20) && (t += "-");
+                return t
+            };
+            w = { lid: "6", isOddsAuto: 1, periods: "", orders: r, tid: 1, Token: p() };
+            var data = JSON.stringify({ 'url': url, 'betsJson': w });
+            $http({
+                method: 'post',
+                url: '/Bet/StartBets',
+                headers: { "Content-Type": "application/json;charset=utf-8" },
+                data: data
+            }).then(function successCallback(response) {
+                alert(response.data);
+                $scope.disabled = "";
+            }, function errorCallback(response) {
+                // 请求失败执行代码
+                alert("请求失败！");
+                $scope.disabled = "";
+            });
+            //$.ajax({
+            //    url: "api/Bets/StartBets",
+            //    context: document.body,
+            //    dataType: "json",
+            //    contentType: "application/x-www-form-urlencoded ;charset=utf-8",
+            //    type: 'post',
+            //    data: data,
+            //    success: function (r) {
+            //        alert(r);
+            //    }
+            //});
+        }
+    });
+</script>
